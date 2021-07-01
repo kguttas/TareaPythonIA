@@ -5,7 +5,7 @@ path_config_file = None
 
 parser = argparse.ArgumentParser()
 
-parser.add_argument("-conf", type=str, help="the base")
+parser.add_argument("-conf", type=str, help="path to file og config")
 
 args = parser.parse_args()
 

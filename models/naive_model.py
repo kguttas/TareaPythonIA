@@ -17,23 +17,26 @@ class NaiveModel:
     def predict(self, data):
         new_data = copy.deepcopy(data)
 
-        aux_data = new_data.mean(axis=0)
+        for key in new_data:
 
-        aux_data = aux_data.to_dict()
+            divider = 1
 
-        result_data = dict()
+            if self.data[key] != 0:
+                divider = self.data[key]
 
-        for key in aux_data:
-            result_data[key] = aux_data[key] / self.data[key]
+            new_data[key] = new_data[key].div(divider)
 
-        return result_data
+        return new_data
 
     def save(self, path_file_data):
         file_handler = open(path_file_data, 'wb')
         pickle.dump(self.data, file_handler, 0)
+        file_handler.close()
 
     def load(self, path_file_data):
-        file_handler = open(path_file_data, 'r')
+        file_handler = open(path_file_data, 'rb')
         self.data = pickle.load(file_handler)
+        file_handler.close()
+
 
 
