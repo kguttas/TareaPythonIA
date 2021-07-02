@@ -1,5 +1,8 @@
 import argparse
 import pandas as pd
+import configparser
+from models import naive_model
+
 
 path_config_file = None
 
@@ -19,24 +22,17 @@ path_data_in = args.datain
 
 path_save_predict = args.dataout
 
-if path_config_file is not None:
-    print(path_config_file)
+config = configparser.ConfigParser()
 
-    import configparser
+config.read(path_config_file)
 
-    config = configparser.ConfigParser()
+model = naive_model.NaiveModel()
 
-    config.read(path_config_file)
+model.load(config['paths']['path_save_avg_data_train'])
 
-    from models import naive_model
+data_mnist = pd.read_csv(path_data_in)
 
-    model = naive_model.NaiveModel()
+result_predict = model.predict(data_mnist)
 
-    model.load(config['paths']['path_save_avg_data_train'])
-
-    data_mnist = pd.read_csv(path_data_in)
-
-    result_predict = model.predict(data_mnist)
-
-    result_predict.to_csv(path_save_predict)
+result_predict.to_csv(path_save_predict)
 
