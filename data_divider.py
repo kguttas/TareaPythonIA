@@ -24,3 +24,12 @@ X_train.to_csv(config['paths']['path_data_train'])
 
 X_test.to_csv(config['paths']['path_data_test'])
 
+with open(config['paths']['path_json_train'], 'w') as text_file:
+    text_file.write(X_train.to_json(orient='index'))
+
+with open(config['paths']['path_json_test'], 'w') as text_file:
+    text_file.write(X_test.to_json(orient='index'))
+
+
+
+
