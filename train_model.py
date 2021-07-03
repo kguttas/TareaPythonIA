@@ -3,6 +3,7 @@ import pandas as pd
 import configparser
 from models import naive_model
 
+print("Train Model Script")
 
 path_config_file = None
 

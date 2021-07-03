@@ -3,6 +3,7 @@ import configparser
 from sklearn.model_selection import train_test_split
 import pandas as pd
 
+print("Data Divider Script")
 
 parser = argparse.ArgumentParser()
 

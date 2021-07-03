@@ -4,6 +4,8 @@ import configparser
 from models import naive_model
 
 
+print("Inference Model Script")
+
 path_config_file = None
 
 parser = argparse.ArgumentParser()
